@@ -1,0 +1,44 @@
+{
+  "general": {
+    "channelsEnabled": {
+      "value": true,
+      "name": "channelsEnabled"
+    },
+    "pmEnabled": {
+      "value": true,
+      "name": "pmEnabled"
+    },
+    "channelPattern": {
+      "value": "BRACKETS",
+      "name": "channelPattern"
+    },
+    "messegePattern": {
+      "value": "WHISPERS",
+      "name": "messegePattern"
+    },
+    "useDefaultTab": {
+      "value": true,
+      "name": "useDefaultTab"
+    },
+    "ignoredChannels": {
+      "value": [],
+      "name": "ignoredChannels"
+    },
+    "defaultChannels": {
+      "value": [],
+      "name": "defaultChannels"
+    }
+  },
+  "filters": {
+    "value": [],
+    "name": "filters"
+  },
+  "channels": {
+    "value": {},
+    "name": "channels"
+  },
+  "pms": {
+    "value": {},
+    "name": "pms"
+  }
+}

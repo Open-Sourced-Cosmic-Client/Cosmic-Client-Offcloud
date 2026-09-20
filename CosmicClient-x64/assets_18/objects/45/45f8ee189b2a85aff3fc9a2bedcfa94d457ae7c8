@@ -1,0 +1,170 @@
+[
+	{
+		"pattern": "prisonslobby*_world",
+		"resource": "prisons/lobby.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons8_world",
+		"resource": "prisons/timeless.png",
+		"x": -3,
+		"z": -3,
+		"w":  6,
+		"h":  6
+	},
+	{
+		"pattern": "prisons7_world",
+		"resource": "prisons/xeon.png",
+		"x": -3,
+		"z": -3,
+		"w":  6,
+		"h":  6
+	},
+	{
+		"pattern": "prisons3_world",
+		"resource": "prisons/sovereign.png",
+		"x": -3,
+		"z": -3,
+		"w":  6,
+		"h":  6
+	},
+	{
+		"pattern": "prisons1_world",
+		"resource": "prisons/sahara.png",
+		"x": -3,
+		"z": -3,
+		"w":  6,
+		"h":  6
+	},
+	{
+		"pattern": "prisons*_pvp",
+		"resource": "prisons/pvp.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_outpost_cosmonaut",
+		"resource": "prisons/outpost_cosmonaut.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_outpost_hero",
+		"resource": "prisons/outpost_hero.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_outpost_trainee",
+		"resource": "prisons/outpost_trainee.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_tutorial",
+		"resource": "prisons/tutorial.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_koth",
+		"resource": "prisons/koth.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_cell_vip",
+		"resource": "prisons/cell_vip.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	},
+	{
+		"pattern": "prisons*_cell_one",
+		"resource": "prisons/cell_one.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_cell_two",
+		"resource": "prisons/cell_two.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_cell_three",
+		"resource": "prisons/cell_three.png",
+		"x": -1,
+		"z": -1,
+		"w":  2,
+		"h":  2
+	},
+	{
+		"pattern": "prisons*_cell_four",
+		"resource": "prisons/cell_four.png",
+		"x": -8,
+		"z": -8,
+		"w":  16,
+		"h":  16
+	},
+	{
+		"pattern": "factions_*battleroyale_envoy",
+		"resource": "pvp/envoy_battleroyale.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	},
+	{
+		"pattern": "factions_*battleroyale_legacy",
+		"resource": "pvp/legacy_battleroyale.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	},
+	{
+		"pattern": "factions_*battleroyale_team_deathmatch",
+		"resource": "pvp/tdm_battleroyale.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	},
+	{
+		"pattern": "factions_*battleroyale_vanilla",
+		"resource": "pvp/vanilla_battleroyale.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	},
+	{
+		"pattern": "factions_*world_end",
+		"resource": "pvp/end.png",
+		"x": -2,
+		"z": -2,
+		"w":  4,
+		"h":  4
+	}
+]

@@ -1,0 +1,48 @@
+# Runtime logs & crash reports
+logs/
+**/logs/
+**/log/
+crash-reports/
+**/crash-reports/
+*.log
+
+# Personal runtime data if launched
+**/servers.dat
+**/servers.dat_old
+**/servers.dat_tmp
+**/saves/
+**/screenshots/*
+!**/screenshots/.gitkeep
+**/schematics/*
+!**/schematics/.gitkeep
+**/resourcepacks/*
+!**/resourcepacks/.gitkeep
+**/shaderpacks/*
+!**/shaderpacks/.gitkeep
+**/usercache.json
+**/lastProfiles.json
+**/profile.json
+**/profiles.json
+**/profiles/
+**/assets_18/skins/
+**/skins/
+**/scratch/
+
+# Build outputs
+target/
+**/target/
+build/
+out/
+
+# Node dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.bak

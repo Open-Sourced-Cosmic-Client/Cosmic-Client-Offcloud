@@ -1,0 +1,3 @@
+ramMB:2048
+width:1280
+height:720

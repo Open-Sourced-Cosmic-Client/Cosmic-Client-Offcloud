@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Client - In-Game Mod & HUD Suite</title>
+    <link rel="stylesheet" href="../css/lunar_menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="lunar-overlay" class="lunar-overlay">
+        <!-- Blur Background Backdrop -->
+        <div class="frosted-backdrop"></div>
+
+        <!-- Main Modal Container -->
+        <div class="lunar-container">
+            <!-- Top Header Bar -->
+            <header class="lunar-header">
+                <div class="header-brand">
+                    <div class="brand-badge">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="9" stroke="url(#cosmic-accent)"/>
+                            <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-30 12 12)" stroke="#06b6d4"/>
+                            <defs>
+                                <linearGradient id="cosmic-accent" x1="0" y1="0" x2="24" y2="24">
+                                    <stop stop-color="#8b5cf6"/>
+                                    <stop offset="1" stop-color="#ec4899"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="brand-title">
+                        <h2>COSMIC CLIENT</h2>
+                        <span class="version-tag">2026 MOD SUITE</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="lunar-nav">
+                    <button class="nav-tab active" data-tab="mods">MODS</button>
+                    <button class="nav-tab" data-tab="hud">EDIT HUD</button>
+                    <button class="nav-tab" data-tab="cosmetics">COSMETICS</button>
+                    <button class="nav-tab" data-tab="settings">SETTINGS</button>
+                </nav>
+
+                <!-- Search & Action Controls -->
+                <div class="header-actions">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <input type="text" id="mod-search" placeholder="Search mods (e.g. CPS, Armor)...">
+                    </div>
+                    <button id="btn-edit-hud-top" class="btn-lunar-primary">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 9l4-4 4 4"/><path d="M9 5v14"/><path d="M19 15l-4 4-4-4"/><path d="M15 19V5"/>
+                        </svg>
+                        EDIT HUD
+                    </button>
+                    <button id="btn-close-menu" class="btn-close" title="Close Menu (ESC)">X</button>
+                </div>
+            </header>
+
+            <!-- Category Filter Bar -->
+            <div class="category-bar">
+                <button class="cat-pill active" data-filter="all">ALL MODS <span class="pill-count">16</span></button>
+                <button class="cat-pill" data-filter="hud">HUD & OVERLAYS</button>
+                <button class="cat-pill" data-filter="pvp">PVP & COMBAT</button>
+                <button class="cat-pill" data-filter="render">RENDER & VISUALS</button>
+                <button class="cat-pill" data-filter="mechanics">MECHANICS</button>
+            </div>
+
+            <!-- Mod Card Deck -->
+            <main class="mod-deck-scroll">
+                <div class="mod-grid" id="mod-grid">
+                    <!-- 1. Keystrokes -->
+                    <div class="mod-card" data-cat="hud pvp">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Keystrokes</h3>
+                                <p>Displays WASD, Space, CPS, and mouse buttons overlay on screen.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-keystrokes" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Keystrokes">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. CPS Counter -->
+                    <div class="mod-card" data-cat="hud pvp">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>CPS Counter</h3>
+                                <p>Real-time clicks-per-second monitor with left and right click stats.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-cps" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure CPS">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Armor HUD -->
+                    <div class="mod-card" data-cat="hud">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Armor & Item HUD</h3>
+                                <p>Displays equipped helmet, chestplate, leggings, boots durability and held item stats.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-armor" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Armor HUD">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Direction HUD -->
+                    <div class="mod-card" data-cat="hud">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Direction HUD</h3>
+                                <p>Cardinal compass bar displaying North, South, East, West and coordinates.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-direction" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Compass">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 5. Potion Effects -->
+                    <div class="mod-card" data-cat="hud pvp">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Potion Status HUD</h3>
+                                <p>Displays active potion buffs, debuffs, and duration timers in a compact layout.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-potions" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Potions">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 6. 1.7 Old Animations -->
+                    <div class="mod-card" data-cat="pvp render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">+</div>
+                            <div class="mod-details">
+                                <h3>1.7 Old Animations</h3>
+                                <p>Classic 1.7 blockhitting, sword swing, rod casting, and bow drawing mechanics.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-animations" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">PvP</span>
+                            <button class="btn-gear" title="Configure Animations">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 7. Fullbright -->
+                    <div class="mod-card" data-cat="render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Fullbright Gamma</h3>
+                                <p>Sets ambient light level to maximum for crystal clear vision in caves and bases.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-fullbright" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">Render</span>
+                            <button class="btn-gear" title="Configure Fullbright">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 8. Fast Render & FPS Engine -->
+                    <div class="mod-card" data-cat="render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Fast Render & FPS Turbo</h3>
+                                <p>Multi-threaded chunk updates, FastMath lookups, and sub-10ms G1GC memory manager.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-fastrender" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">FPS</span>
+                            <button class="btn-gear" title="Configure Performance">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 9. Combo Counter -->
+                    <div class="mod-card" data-cat="hud pvp">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Combo Counter</h3>
+                                <p>Tracks consecutive consecutive melee attack hits on opposing players.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-combo" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">PvP</span>
+                            <button class="btn-gear" title="Configure Combo">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 10. FPS & Ping Display -->
+                    <div class="mod-card" data-cat="hud">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>FPS & Ping HUD</h3>
+                                <p>Crisp on-screen display of current frames-per-second and server latency (ms).</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-fps" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Display">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 11. Custom Crosshair -->
+                    <div class="mod-card" data-cat="render pvp">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Custom Crosshair</h3>
+                                <p>Customizable dynamic crosshair with color picker, gap size, thickness, and dot.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-crosshair" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">PvP</span>
+                            <button class="btn-gear" title="Configure Crosshair">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 12. Scoreboard Customizer -->
+                    <div class="mod-card" data-cat="hud render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Scoreboard Enhancer</h3>
+                                <p>Remove red numbers, hide background border, and customize scale and font.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-scoreboard" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">HUD</span>
+                            <button class="btn-gear" title="Configure Scoreboard">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 13. Motion Blur -->
+                    <div class="mod-card" data-cat="render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Motion Blur</h3>
+                                <p>Cinematic motion blur shader with customizable accumulation intensity.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-motionblur">
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">Visuals</span>
+                            <button class="btn-gear" title="Configure Motion Blur">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 14. Item Physics 3D -->
+                    <div class="mod-card" data-cat="render mechanics">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Item Physics</h3>
+                                <p>Realistic 3D rotating ground items with natural gravity and collisions.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-itemphysics" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">Visuals</span>
+                            <button class="btn-gear" title="Configure Physics">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 15. Hitbox & Hurt Colors -->
+                    <div class="mod-card" data-cat="pvp render">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Hitbox & Hurt Color</h3>
+                                <p>Custom entity hurt overlay color (RGB picker) and transparent player hitboxes.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-hurtcolor">
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">PvP</span>
+                            <button class="btn-gear" title="Configure Colors">* Settings</button>
+                        </div>
+                    </div>
+
+                    <!-- 16. Chat & TabbyChat -->
+                    <div class="mod-card" data-cat="hud mechanics">
+                        <div class="mod-card-top">
+                            <div class="mod-icon-box">*</div>
+                            <div class="mod-details">
+                                <h3>Enhanced Chat</h3>
+                                <p>Infinite chat scrollback history, timestamps, transparent background, and copy text.</p>
+                            </div>
+                            <label class="lunar-switch">
+                                <input type="checkbox" id="toggle-chat" checked>
+                                <span class="lunar-slider"></span>
+                            </label>
+                        </div>
+                        <div class="mod-card-bottom">
+                            <span class="mod-badge">Mechanics</span>
+                            <button class="btn-gear" title="Configure Chat">* Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Bottom Control Footer -->
+            <footer class="lunar-footer">
+                <div class="footer-status">
+                    <span class="dot-active"></span>
+                    <span>14 Active Mods - 2026 Pro Suite Active</span>
+                </div>
+                <div class="footer-btns">
+                    <button id="btn-reset-all" class="btn-lunar-secondary">Reset to Defaults</button>
+                    <button id="btn-save-profile" class="btn-lunar-primary">Save Profile</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- HUD Editor Dragging Overlay (When in Edit HUD mode) -->
+    <div id="hud-editor-canvas" class="hud-editor-canvas hidden">
+        <div class="editor-header">
+            <div class="editor-title">HUD Layout Editor (Drag & Snap)</div>
+            <div class="editor-controls">
+                <button id="btn-snap-grid" class="btn-editor active">Snap to Grid: ON</button>
+                <button id="btn-reset-hud-pos" class="btn-editor">Reset Positions</button>
+                <button id="btn-exit-hud-editor" class="btn-editor btn-primary">Done Editing (ESC)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/lunar_menu.js"></script>
+</body>
+</html>

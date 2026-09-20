@@ -1,0 +1,625 @@
+version: @MOD_VERSION@
+biome * ffffff ffffff ffffff
+biome 0 ffffff 8eb971 71a74d
+biome 1 ffffff 91bd59 77ab2f
+biome 2 ffffff bfb755 aea42a
+biome 3 ffffff 8ab689 6da36b
+biome 4 ffffff 79c05a 59ae30
+biome 5 ffffff 86b783 68a464
+biome 6 e0ffae 6ac44e 45b421
+biome 7 ffffff 8eb971 71a74d
+biome 8 ffffff bfb755 aea42a
+biome 9 ffffff 8eb971 71a74d
+biome 10 ffffff 80b497 60a17b
+biome 11 ffffff 80b497 60a17b
+biome 12 ffffff 80b497 60a17b
+biome 13 ffffff 80b497 60a17b
+biome 14 ffffff 55c93f 2bbb0f
+biome 15 ffffff 55c93f 2bbb0f
+biome 16 ffffff 91bd59 77ab2f
+biome 17 ffffff bfb755 aea42a
+biome 18 ffffff 79c05a 59ae30
+biome 19 ffffff 86b783 68a464
+biome 20 ffffff 8ab689 6da36b
+biome 21 ffffff 59c93c 30bb0b
+biome 22 ffffff 59c93c 30bb0b
+biome 23 ffffff 64c73f 3eb80f
+biome 24 ffffff 8eb971 71a74d
+biome 25 ffffff 8ab689 6da36b
+biome 26 ffffff 83b593 64a278
+biome 27 ffffff 88bb66 6ba940
+biome 28 ffffff 88bb66 6ba940
+biome 29 ffffff 79c05a 59ae30
+biome 30 ffffff 80b497 60a17b
+biome 31 ffffff 80b497 60a17b
+biome 32 ffffff 86b87f 68a55f
+biome 33 ffffff 86b87f 68a55f
+biome 34 ffffff 8ab689 6da36b
+biome 35 ffffff bfb755 aea42a
+biome 36 ffffff bfb755 aea42a
+biome 37 ffffff bfb755 aea42a
+biome 38 ffffff bfb755 aea42a
+biome 39 ffffff bfb755 aea42a
+biome 129 ffffff 91bd59 77ab2f
+biome 130 ffffff bfb755 aea42a
+biome 131 ffffff 8ab689 6da36b
+biome 132 ffffff 79c05a 59ae30
+biome 133 ffffff 86b783 68a464
+biome 134 e0ffae 6ac44e 45b421
+biome 140 ffffff 80b497 60a17b
+biome 149 ffffff 59c93c 30bb0b
+biome 151 ffffff 64c73f 3eb80f
+biome 155 ffffff 88bb66 6ba940
+biome 156 ffffff 88bb66 6ba940
+biome 157 ffffff 79c05a 59ae30
+biome 158 ffffff 80b497 60a17b
+biome 160 ffffff 86b783 68a464
+biome 161 ffffff 86b783 68a464
+biome 162 ffffff 8ab689 6da36b
+biome 163 ffffff bfb755 aea42a
+biome 164 ffffff bfb755 aea42a
+biome 165 ffffff bfb755 aea42a
+biome 166 ffffff bfb755 aea42a
+biome 167 ffffff bfb755 aea42a
+blocktype * * normal
+blocktype minecraft:grass * grass
+blocktype minecraft:flowing_water * water
+blocktype minecraft:water * water
+blocktype minecraft:leaves * leaves
+blocktype minecraft:leaves 1 opaque
+blocktype minecraft:leaves 2 opaque
+blocktype minecraft:leaves2 * leaves
+blocktype minecraft:tallgrass * grass
+blocktype minecraft:vine * foliage
+blocktype BiomesOPlenty:grass * grass
+blocktype BiomesOPlenty:plant_0 * grass
+blocktype BiomesOPlenty:plant_1 * grass
+blocktype BiomesOPlenty:leaves_0 * leaves
+blocktype BiomesOPlenty:leaves_1 * leaves
+blocktype BiomesOPlenty:leaves_2 * leaves
+blocktype BiomesOPlenty:leaves_3 * leaves
+blocktype BiomesOPlenty:leaves_4 * leaves
+blocktype BiomesOPlenty:leaves_5 * leaves
+block * * 00000000
+block tile.air * ff7c007c
+block tile.stone * ff7d7d7d
+block tile.stone 1 ff997162
+block tile.stone 2 ff9f7262
+block tile.stone 3 ffb3b3b6
+block tile.stone 4 ffb7b7b9
+block tile.stone 5 ff828383
+block tile.stone 6 ff858586
+block tile.grass * ff41471c
+block tile.dirt * ff866043
+block tile.dirt 1 ff77553b
+block tile.dirt 2 ff7a5739
+block tile.stonebrick * ff7a7a7a
+block tile.wood * ff9c7f4e
+block tile.wood 1 ff674d2e
+block tile.wood 2 ffc3b37b
+block tile.wood 3 ff9a6e4d
+block tile.wood 4 ffa95b33
+block tile.wood 5 ff3d2712
+block tile.sapling * 6b476625
+block tile.sapling 1 53333a21
+block tile.sapling 2 6b769654
+block tile.sapling 3 55305612
+block tile.sapling 4 4b727314
+block tile.sapling 5 6438561c
+block tile.sapling 9 53333a21
+block tile.sapling 10 6b769654
+block tile.sapling 11 55305612
+block tile.sapling 12 4b727314
+block tile.sapling 13 6438561c
+block tile.bedrock * ff535353
+block tile.water * b32f43f4
+block tile.lava * ffd8681a
+block tile.sand * ffdbd3a0
+block tile.sand 1 ffa95821
+block tile.gravel * ff7e7c7a
+block tile.oreGold * ff8f8b7c
+block tile.oreIron * ff87827e
+block tile.oreCoal * ff737373
+block tile.log 0 ff696359
+block tile.log 1 ff342817
+block tile.log 4 ff696359
+block tile.log 5 ff342817
+block tile.log 8 ff696359
+block tile.log 9 ff342817
+block tile.log 12 ff696359
+block tile.log 13 ff342817
+block tile.log 16 ff696359
+block tile.leaves * 9a265f0c
+block tile.sponge * ffc2c354
+block tile.sponge 1 ffa09e3f
+block tile.sponge 3 ffa09e3f
+block tile.sponge 5 ffa09e3f
+block tile.sponge 7 ffa09e3f
+block tile.sponge 9 ffa09e3f
+block tile.sponge 11 ffa09e3f
+block tile.sponge 13 ffa09e3f
+block tile.sponge 15 ffa09e3f
+block tile.glass * 46daf0f4
+block tile.oreLapis * ff667086
+block tile.blockLapis * ff264389
+block tile.dispenser * ff606060
+block tile.dispenser 2 ff747474
+block tile.dispenser 3 ff747474
+block tile.dispenser 4 ff747474
+block tile.dispenser 5 ff747474
+block tile.dispenser 10 ff747474
+block tile.dispenser 11 ff747474
+block tile.dispenser 12 ff747474
+block tile.dispenser 13 ff747474
+block tile.sandStone * ffd8d19d
+block tile.sandStone 1 ffd7d09a
+block tile.sandStone 2 ffdbd3a1
+block tile.musicBlock * ff644332
+block tile.bed * ff8e1616
+block tile.bed 8 ffaf7474
+block tile.bed 9 ffaf7474
+block tile.bed 10 ffaf7474
+block tile.bed 11 ffaf7474
+block tile.bed 12 ffaf7474
+block tile.bed 13 ffaf7474
+block tile.bed 14 ffaf7474
+block tile.bed 15 ffaf7474
+block tile.goldenRail * ab846c48
+block tile.goldenRail 8 ab9a6846
+block tile.goldenRail 9 ab9a6846
+block tile.goldenRail 10 ab9a6846
+block tile.goldenRail 11 ab9a6846
+block tile.goldenRail 12 ab9a6846
+block tile.goldenRail 13 ab9a6846
+block tile.detectorRail * 9b786559
+block tile.detectorRail 8 9b895c50
+block tile.detectorRail 9 9b895c50
+block tile.detectorRail 10 9b895c50
+block tile.detectorRail 11 9b895c50
+block tile.detectorRail 12 9b895c50
+block tile.detectorRail 13 9b895c50
+block tile.pistonStickyBase * ff6a665f
+block tile.web * 68dcdcdc
+block tile.tallgrass * 517b4f19
+block tile.tallgrass 1 a2416438
+block tile.tallgrass 2 4e3a5832
+block tile.deadbush * 517b4f19
+block tile.pistonBase * ff998159
+block tile.pistonBase 8 ff8d9263
+block tile.pistonBase 9 ff8d9263
+block tile.pistonBase 10 ff8d9263
+block tile.pistonBase 11 ff8d9263
+block tile.pistonBase 12 ff8d9263
+block tile.pistonBase 13 ff8d9263
+block tile.cloth * ffdddddd
+block tile.cloth 1 ffdb7d3e
+block tile.cloth 2 ffb350bc
+block tile.cloth 3 ff6a8ac9
+block tile.cloth 4 ffb1a627
+block tile.cloth 5 ff41ae38
+block tile.cloth 6 ffd08499
+block tile.cloth 7 ff404040
+block tile.cloth 8 ff9aa1a1
+block tile.cloth 9 ff2e6e89
+block tile.cloth 10 ff7e3db5
+block tile.cloth 11 ff2e388d
+block tile.cloth 12 ff4f321f
+block tile.cloth 13 ff35461b
+block tile.cloth 14 ff963430
+block tile.cloth 15 ff191616
+block tile.null * ff7c007c
+block tile.flower1 * 1e6ca200
+block tile.flower2 * 22643904
+block tile.flower2 1 2d25988a
+block tile.flower2 2 26b18dd3
+block tile.flower2 3 2aa2bf8a
+block tile.flower2 4 30678726
+block tile.flower2 5 315f8620
+block tile.flower2 6 305e9941
+block tile.flower2 7 2f659649
+block tile.flower2 8 2bb0c58b
+block tile.mushroom * ffcaab78
+block tile.mushroom 10 ffcfccc2
+block tile.mushroom 14 ffb62524
+block tile.mushroom 15 ffcfccc2
+block tile.blockGold * fff9ec4e
+block tile.blockIron * ffdbdbdb
+block tile.stoneSlab * ff7a7a7a
+block tile.stoneSlab 0 ffa6a6a6
+block tile.stoneSlab 1 ffd8d19d
+block tile.stoneSlab 2 ff9c7f4e
+block tile.stoneSlab 4 ff926356
+block tile.stoneSlab 6 ff2c161a
+block tile.stoneSlab 7 ffece9e2
+block tile.stoneSlab 8 ffa6a6a6
+block tile.stoneSlab 9 ffd8d19d
+block tile.stoneSlab 10 ff9c7f4e
+block tile.stoneSlab 12 ff926356
+block tile.stoneSlab 14 ff2c161a
+block tile.stoneSlab 15 ffece9e2
+block tile.stoneSlab 16 ffa6a6a6
+block tile.brick * ff926356
+block tile.tnt * ffa95c47
+block tile.bookshelf * ff6b5839
+block tile.stoneMoss * ff677967
+block tile.obsidian * ff14121d
+block tile.torch * 13826a3a
+block tile.fire * 91d48e34
+block tile.mobSpawner * 9b1a2731
+block tile.stairsWood * ff9c7f4e
+block tile.chest * ff9c7f4e
+block tile.redstoneDust * 35efefef
+block tile.oreDiamond * ff818c8f
+block tile.blockDiamond * ff61dbd5
+block tile.workbench * ff735f3f
+block tile.crops 0 0500b312
+block tile.crops 1 1312ac0f
+block tile.crops 2 2b1c890b
+block tile.crops 3 4d258b08
+block tile.crops 4 672e8007
+block tile.crops 5 80427b07
+block tile.crops 6 8e507607
+block tile.crops 7 a6566607
+block tile.farmland * ff866043
+block tile.furnace * ff7d6655
+block tile.sign * ff9c7f4e
+block tile.doorOak * ff866532
+block tile.doorOak 8 cf866733
+block tile.doorOak 9 cf866733
+block tile.doorOak 10 cf866733
+block tile.doorOak 11 cf866733
+block tile.doorOak 12 cf866733
+block tile.doorOak 13 cf866733
+block tile.doorOak 14 cf866733
+block tile.doorOak 15 cf866733
+block tile.ladder * 8f795f34
+block tile.rail * 8f796c58
+block tile.rail 6 6b786b56
+block tile.rail 7 6b786b56
+block tile.rail 8 6b786b56
+block tile.rail 9 6b786b56
+block tile.stairsStone * ff7a7a7a
+block tile.lever * ff7a7a7a
+block tile.pressurePlateStone * ff7d7d7d
+block tile.doorIron * ffa3a3a3
+block tile.doorIron 8 cfbababa
+block tile.doorIron 9 cfbababa
+block tile.doorIron 10 cfbababa
+block tile.doorIron 11 cfbababa
+block tile.doorIron 12 cfbababa
+block tile.doorIron 13 cfbababa
+block tile.doorIron 14 cfbababa
+block tile.doorIron 15 cfbababa
+block tile.pressurePlateWood * ff9c7f4e
+block tile.oreRedstone * ff846b6b
+block tile.notGate * 19a74b29
+block tile.button * ff9c7f4e
+block tile.snow * ffeffbfb
+block tile.ice * 9f7dadff
+block tile.cactus * e70d6618
+block tile.clay * ff9ea4b0
+block tile.reeds * 8c94c065
+block tile.jukebox * ff644332
+block tile.fence * ff9c7f4e
+block tile.pumpkin * ff8e4c0c
+block tile.hellrock * ff6f3634
+block tile.hellsand * ff544033
+block tile.lightgem * ff8f7645
+block tile.portal * c05b0dc1
+block tile.litpumpkin * ffb9851c
+block tile.cake 0 6fbc8d71
+block tile.cake 1 6fbc8d71
+block tile.cake 2 6fbc8d71
+block tile.cake 3 6fbc8d71
+block tile.cake 4 6fbc8d71
+block tile.cake 5 6fbc8d71
+block tile.cake 6 6fbc8d71
+block tile.diode * ffa09393
+block tile.stainedGlass * 7bffffff
+block tile.stainedGlass 1 7bd87e32
+block tile.stainedGlass 2 7bb24bd8
+block tile.stainedGlass 3 7b6599d8
+block tile.stainedGlass 4 7be4e432
+block tile.stainedGlass 5 7b7ecb18
+block tile.stainedGlass 6 7bf17ea4
+block tile.stainedGlass 7 7b4b4b4b
+block tile.stainedGlass 8 7b999999
+block tile.stainedGlass 9 7b4b7e99
+block tile.stainedGlass 10 7b7e3eb2
+block tile.stainedGlass 11 7b324bb2
+block tile.stainedGlass 12 7b654b32
+block tile.stainedGlass 13 7b657e32
+block tile.stainedGlass 14 7b993232
+block tile.stainedGlass 15 7b181818
+block tile.trapdoor * db7e5d2d
+block tile.monsterStoneEgg * ff7d7d7d
+block tile.monsterStoneEgg 1 ff7a7a7a
+block tile.monsterStoneEgg 2 ff7a7a7a
+block tile.monsterStoneEgg 3 ff72776a
+block tile.monsterStoneEgg 4 ff767676
+block tile.monsterStoneEgg 5 ff767676
+block tile.stonebricksmooth * ff7a7a7a
+block tile.stonebricksmooth 1 ff72776a
+block tile.stonebricksmooth 2 ff767676
+block tile.stonebricksmooth 3 ff767676
+block tile.fenceIron * 736d6c6a
+block tile.thinGlass * 46daf0f4
+block tile.melon * ff8d9124
+block tile.pumpkinStem 0 22009900
+block tile.pumpkinStem 1 22139402
+block tile.pumpkinStem 2 22268f04
+block tile.pumpkinStem 3 22398a07
+block tile.pumpkinStem 4 224c8509
+block tile.pumpkinStem 5 2260810c
+block tile.pumpkinStem 6 22737c0e
+block tile.pumpkinStem 7 22867710
+block tile.vine * 8a1f4e0a
+block tile.fenceGate * ff9c7f4e
+block tile.stairsBrick * ff926356
+block tile.stairsStoneBrickSmooth * ff7a7a7a
+block tile.mycel * ff715849
+block tile.waterlily * 93345a2a
+block tile.netherBrick * ff2c161a
+block tile.netherFence * ff2c161a
+block tile.stairsNetherBrick * ff2c161a
+block tile.netherStalk 0 2a6a0e1e
+block tile.netherStalk 1 786c0f16
+block tile.netherStalk 2 786c0f16
+block tile.netherStalk 3 cc6f1211
+block tile.enchantmentTable * ff12101b
+block tile.brewingStand * 767c6751
+block tile.cauldron 0 f33e3e3e
+block tile.cauldron 1 f33e3e3e
+block tile.cauldron 2 f33e3e3e
+block tile.cauldron 3 f33e3e3e
+block tile.endPortalFrame * cf93a07b
+block tile.whiteStone * ffdddfa5
+block tile.dragonEgg * ff0c090f
+block tile.redstoneLight * ff775937
+block tile.woodSlab * ff9c7f4e
+block tile.woodSlab 1 ff674d2e
+block tile.woodSlab 2 ffc3b37b
+block tile.woodSlab 3 ff9a6e4d
+block tile.woodSlab 4 ffa95b33
+block tile.woodSlab 5 ff3d2712
+block tile.woodSlab 9 ff674d2e
+block tile.woodSlab 10 ffc3b37b
+block tile.woodSlab 11 ff9a6e4d
+block tile.woodSlab 12 ffa95b33
+block tile.woodSlab 13 ff3d2712
+block tile.cocoa * 2e8a8c40
+block tile.cocoa 4 58896b33
+block tile.cocoa 5 58896b33
+block tile.cocoa 6 58896b33
+block tile.cocoa 7 58896b33
+block tile.cocoa 8 8391501e
+block tile.cocoa 9 8391501e
+block tile.cocoa 10 8391501e
+block tile.cocoa 11 8391501e
+block tile.stairsSandStone * ffd8d19d
+block tile.oreEmerald * ff6d8074
+block tile.enderChest * ff14121d
+block tile.tripWireSource * ff9c7f4e
+block tile.tripWire * 1b818181
+block tile.blockEmerald * ff51d975
+block tile.stairsWoodSpruce * ff674d2e
+block tile.stairsWoodBirch * ffc3b37b
+block tile.stairsWoodJungle * ff9a6e4d
+block tile.commandBlock * ffb2896f
+block tile.beacon * 46daf0f4
+block tile.cobbleWall * ff7a7a7a
+block tile.cobbleWall 1 ff677967
+block tile.flowerPot * 31764133
+block tile.carrots 0 0901ab10
+block tile.carrots 1 0901ab10
+block tile.carrots 2 1701bb0f
+block tile.carrots 3 1701bb0f
+block tile.carrots 4 3600be10
+block tile.carrots 5 3600be10
+block tile.carrots 6 3600be10
+block tile.carrots 7 6f158002
+block tile.potatoes 0 0901ab10
+block tile.potatoes 1 0901ab10
+block tile.potatoes 2 1701bb0f
+block tile.potatoes 3 1701bb0f
+block tile.potatoes 4 3600be10
+block tile.potatoes 5 3600be10
+block tile.potatoes 6 3600be10
+block tile.potatoes 7 6922aa24
+block tile.skull * ff544033
+block tile.anvil * ff404040
+block tile.chestTrap * ff9c7f4e
+block tile.weightedPlate_light * fff9ec4e
+block tile.weightedPlate_heavy * ffdbdbdb
+block tile.comparator * ff9c9695
+block tile.comparator 8 ffa59594
+block tile.comparator 9 ffa59594
+block tile.comparator 10 ffa59594
+block tile.comparator 11 ffa59594
+block tile.comparator 12 ffa59594
+block tile.comparator 13 ffa59594
+block tile.comparator 14 ffa59594
+block tile.comparator 15 ffa59594
+block tile.daylightDetector * ff6a6d70
+block tile.blockRedstone * ffab1b09
+block tile.netherquartz * ff7d544f
+block tile.hopper * ff3e3e3e
+block tile.quartzBlock * ffece9e2
+block tile.quartzBlock 1 ffe7e4dc
+block tile.quartzBlock 2 ffe7e3db
+block tile.quartzBlock 3 ffe7e3db
+block tile.quartzBlock 4 ffe7e3db
+block tile.stairsQuartz * ffece9e2
+block tile.activatorRail * 9b685347
+block tile.activatorRail 8 9b8d5146
+block tile.activatorRail 9 9b8d5146
+block tile.activatorRail 10 9b8d5146
+block tile.activatorRail 11 9b8d5146
+block tile.activatorRail 12 9b8d5146
+block tile.activatorRail 13 9b8d5146
+block tile.dropper * ff606060
+block tile.dropper 2 ff747474
+block tile.dropper 3 ff747474
+block tile.dropper 4 ff747474
+block tile.dropper 5 ff747474
+block tile.dropper 10 ff747474
+block tile.dropper 11 ff747474
+block tile.dropper 12 ff747474
+block tile.dropper 13 ff747474
+block tile.clayHardenedStained * ffd1b2a1
+block tile.clayHardenedStained 1 ffa15325
+block tile.clayHardenedStained 2 ff95586c
+block tile.clayHardenedStained 3 ff716c89
+block tile.clayHardenedStained 4 ffba8523
+block tile.clayHardenedStained 5 ff677534
+block tile.clayHardenedStained 6 ffa14e4e
+block tile.clayHardenedStained 7 ff392a23
+block tile.clayHardenedStained 8 ff876a61
+block tile.clayHardenedStained 9 ff565b5b
+block tile.clayHardenedStained 10 ff764656
+block tile.clayHardenedStained 11 ff4a3b5b
+block tile.clayHardenedStained 12 ff4d3323
+block tile.clayHardenedStained 13 ff4c532a
+block tile.clayHardenedStained 14 ff8f3d2e
+block tile.clayHardenedStained 15 ff251610
+block tile.thinStainedGlass * 7bffffff
+block tile.thinStainedGlass 1 7bd87e32
+block tile.thinStainedGlass 2 7bb24bd8
+block tile.thinStainedGlass 3 7b6599d8
+block tile.thinStainedGlass 4 7be4e432
+block tile.thinStainedGlass 5 7b7ecb18
+block tile.thinStainedGlass 6 7bf17ea4
+block tile.thinStainedGlass 7 7b4b4b4b
+block tile.thinStainedGlass 8 7b999999
+block tile.thinStainedGlass 9 7b4b7e99
+block tile.thinStainedGlass 10 7b7e3eb2
+block tile.thinStainedGlass 11 7b324bb2
+block tile.thinStainedGlass 12 7b654b32
+block tile.thinStainedGlass 13 7b657e32
+block tile.thinStainedGlass 14 7b993232
+block tile.thinStainedGlass 15 7b181818
+block tile.stairsWoodAcacia * ffa95b33
+block tile.stairsWoodDarkOak * ff3d2712
+block tile.slime * bc78c865
+block tile.ironTrapdoor * dbc7c7c7
+block tile.prismarine * ff6aaa96
+block tile.prismarine 1 ff63a08f
+block tile.prismarine 2 ff3b574b
+block tile.seaLantern * ffacc8be
+block tile.hayBlock * ff9d7412
+block tile.woolCarpet * ffdddddd
+block tile.woolCarpet 1 ffdb7d3e
+block tile.woolCarpet 2 ffb350bc
+block tile.woolCarpet 3 ff6a8ac9
+block tile.woolCarpet 4 ffb1a627
+block tile.woolCarpet 5 ff41ae38
+block tile.woolCarpet 6 ffd08499
+block tile.woolCarpet 7 ff404040
+block tile.woolCarpet 8 ff9aa1a1
+block tile.woolCarpet 9 ff2e6e89
+block tile.woolCarpet 10 ff7e3db5
+block tile.woolCarpet 11 ff2e388d
+block tile.woolCarpet 12 ff4f321f
+block tile.woolCarpet 13 ff35461b
+block tile.woolCarpet 14 ff963430
+block tile.woolCarpet 15 ff191616
+block tile.clayHardened * ff965c42
+block tile.blockCoal * ff121212
+block tile.icePacked * ffa5c2f5
+block tile.doublePlant * 33eac521
+block tile.doublePlant 0 33416d2b
+block tile.doublePlant 1 568e9484
+block tile.doublePlant 2 8a8c8c8c
+block tile.doublePlant 3 9e7b7b7b
+block tile.doublePlant 4 b9454003
+block tile.doublePlant 5 9336583b
+block tile.doublePlant 6 33416d2b
+block tile.doublePlant 7 33416d2b
+block tile.doublePlant 16 33416d2b
+block tile.banner * ff9c7f4e
+block tile.redSandStone * ffa5541d
+block tile.redSandStone 1 ffa2521b
+block tile.redSandStone 2 ffa8551e
+block tile.stairsRedSandStone * ffa5541d
+block tile.stoneSlab2 * ffa5541d
+block tile.spruceFenceGate * ff674d2e
+block tile.birchFenceGate * ffc3b37b
+block tile.jungleFenceGate * ff9a6e4d
+block tile.darkOakFenceGate * ff3d2712
+block tile.acaciaFenceGate * ffa95b33
+block tile.spruceFence * ff674d2e
+block tile.birchFence * ffc3b37b
+block tile.jungleFence * ff9a6e4d
+block tile.darkOakFence * ff3d2712
+block tile.acaciaFence * ffa95b33
+block tile.doorSpruce * ff614b31
+block tile.doorSpruce 8 ff604a31
+block tile.doorSpruce 9 ff604a31
+block tile.doorSpruce 10 ff604a31
+block tile.doorSpruce 11 ff604a31
+block tile.doorSpruce 12 ff604a31
+block tile.doorSpruce 13 ff604a31
+block tile.doorSpruce 14 ff604a31
+block tile.doorSpruce 15 ff604a31
+block tile.doorBirch * ffc6bd8d
+block tile.doorBirch 8 ffd9d2b3
+block tile.doorBirch 9 ffd9d2b3
+block tile.doorBirch 10 ffd9d2b3
+block tile.doorBirch 11 ffd9d2b3
+block tile.doorBirch 12 ffd9d2b3
+block tile.doorBirch 13 ffd9d2b3
+block tile.doorBirch 14 ffd9d2b3
+block tile.doorBirch 15 ffd9d2b3
+block tile.doorJungle * e7926b4d
+block tile.doorJungle 8 cf977155
+block tile.doorJungle 9 cf977155
+block tile.doorJungle 10 cf977155
+block tile.doorJungle 11 cf977155
+block tile.doorJungle 12 cf977155
+block tile.doorJungle 13 cf977155
+block tile.doorJungle 14 cf977155
+block tile.doorJungle 15 cf977155
+block tile.doorAcacia * b79b5836
+block tile.doorAcacia 8 b7a15d3a
+block tile.doorAcacia 9 b7a15d3a
+block tile.doorAcacia 10 b7a15d3a
+block tile.doorAcacia 11 b7a15d3a
+block tile.doorAcacia 12 b7a15d3a
+block tile.doorAcacia 13 b7a15d3a
+block tile.doorAcacia 14 b7a15d3a
+block tile.doorAcacia 15 b7a15d3a
+block tile.doorDarkOak * ff412c17
+block tile.doorDarkOak 8 ff452f19
+block tile.doorDarkOak 9 ff452f19
+block tile.doorDarkOak 10 ff452f19
+block tile.doorDarkOak 11 ff452f19
+block tile.doorDarkOak 12 ff452f19
+block tile.doorDarkOak 13 ff452f19
+block tile.doorDarkOak 14 ff452f19
+block tile.doorDarkOak 15 ff452f19
+block tile.oreAmethyst * ff797080
+block tile.blockAmethyst * ff613a78
+block tile.luckyBlue * ff4eb6fb
+block tile.luckyGreen * ff5afb6b
+block tile.luckyOrange * fffb934e
+block tile.luckyPink * fff34ed9
+block tile.luckyPurple * ffd44efa
+block tile.luckyRed * fffb685d
+block tile.luckyTurqoise * ff4ee1ec
+block tile.luckyYellow * fffbcd4e
+block minecraft:yellow_flower * 60ffff00
+block minecraft:red_flower 0 60ff0000
+block minecraft:red_flower 1 601c92d6
+block minecraft:red_flower 2 60b865fb
+block minecraft:red_flower 3 60e4eaf2
+block minecraft:red_flower 4 60d33a17
+block minecraft:red_flower 5 60e17124
+block minecraft:red_flower 6 60ffffff
+block minecraft:red_flower 7 60eabeea
+block minecraft:red_flower 8 60eae6ad
+block minecraft:double_plant 0 60ffff00
+block minecraft:double_plant 1 d09f78a4
+block minecraft:double_plant 2 60ff0000
+block minecraft:double_plant 3 d0e3b8f7
+block minecraft:leaves 1 ff000000
+block minecraft:leaves 2 ff000000

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Client Offcloud</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Starfield & Nebula Canvas -->
+    <canvas id="nebula-canvas"></canvas>
+
+    <!-- Custom App Container -->
+    <div id="app-window">
+        <!-- Draggable Titlebar -->
+        <header id="titlebar">
+            <div id="titlebar-drag">
+                <div class="brand">
+                    <img class="brand-old-icon" src="assets/cosmic-icon.png" alt="Cosmic Client Icon">
+                    <img class="brand-old-logo" src="assets/cosmic-logo.png" alt="Cosmic Client">
+                    <div class="brand-text">
+                        <span class="brand-tag">OFFCLOUD EDITION</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Status Pill -->
+            <div class="header-status">
+                <div id="status-pill" class="status-pill ready">
+                    <span class="status-dot"></span>
+                    <span id="status-text">OFFCLOUD ENGINE READY</span>
+                </div>
+            </div>
+
+            <!-- Window Action Controls -->
+            <div class="window-controls">
+                <button id="btn-minimize" class="win-btn" title="Minimize">
+                    <svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M3 8h10v1H3z"/></svg>
+                </button>
+                <button id="btn-maximize" class="win-btn" title="Maximize">
+                    <svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M3 3v10h10V3H3zm9 9H4V4h8v8z"/></svg>
+                </button>
+                <button id="btn-close" class="win-btn btn-danger" title="Close">
+                    <svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M3.7 3L3 3.7 7.3 8 3 12.3l.7.7 4.3-4.3 4.3 4.3.7-.7L8.7 8 13 3.7l-.7-.7-4.3 4.3L3.7 3z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace with Sidebar & View Container -->
+        <div id="main-layout">
+            <!-- Navigation Sidebar -->
+            <nav id="sidebar">
+                <div class="nav-group">
+                    <button class="nav-item active" data-tab="launch">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4.5c1.47-1.47 4.5-2 4.5-2"/></svg>
+                        </span>
+                        <span class="nav-label">Play</span>
+                    </button>
+                    <button class="nav-item" data-tab="mods">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </span>
+                        <span class="nav-label">Render & Visuals</span>
+                    </button>
+                    <button class="nav-item" data-tab="accounts">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </span>
+                        <span class="nav-label">Accounts</span>
+                    </button>
+                    <button class="nav-item" data-tab="settings">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </span>
+                        <span class="nav-label">Settings</span>
+                    </button>
+                    <button class="nav-item" data-tab="folders">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        </span>
+                        <span class="nav-label">Folders</span>
+                    </button>
+                    <button class="nav-item" data-tab="console">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                        </span>
+                        <span class="nav-label">Console</span>
+                    </button>
+                </div>
+
+                <!-- Sidebar Footer Info -->
+                <div class="sidebar-footer">
+                    <div class="agent-indicator" title="2026 FPS Suite Active: Sub-10ms G1GC, Memory Optimization, and 0-Cloud Mode">
+                        <span class="agent-pulse"></span>
+                        <span class="agent-text">2026 Engine Active</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main id="content-views">
+                <!-- ================= TAB: LAUNCH ================= -->
+                <section id="view-launch" class="tab-view active">
+                    <div class="hero-banner">
+                        <div class="hero-glow"></div>
+                        <div class="hero-content">
+                            <span class="hero-badge">100% PURE OFFCLOUD</span>
+                            <h1 class="hero-title">Cosmic Client Offcloud</h1>
+                            <p class="hero-subtitle">Pure off-cloud 1.8.9 PvP client. Built for Cosmonauts with zero remote dependencies and ultra-high FPS tuning.</p>
+                        </div>
+                    </div>
+
+                    <!-- Launch Control Deck (Top Positioned) -->
+                    <div class="launch-deck">
+                        <div class="deck-account">
+                            <div class="deck-avatar-box">
+                                <img id="deck-avatar-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%236b5344'/%3E%3Crect x='4' y='4' width='8' height='8' fill='%23cbb194'/%3E%3Crect x='3' y='2' width='10' height='3' fill='%234a3628'/%3E%3Crect x='4' y='7' width='2' height='1.5' fill='%23384282'/%3E%3Crect x='10' y='7' width='2' height='1.5' fill='%23384282'/%3E%3Crect x='6' y='9' width='4' height='1.5' fill='%23704238'/%3E%3C/svg%3E" alt="Avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\'%3E%3Crect width=\'16\' height=\'16\' fill=\'%236b5344\'/%3E%3Crect x=\'4\' y=\'4\' width=\'8\' height=\'8\' fill=\'%23cbb194\'/%3E%3Crect x=\'3\' y=\'2\' width=\'10\' height=\'3\' fill=\'%234a3628\'/%3E%3C/svg%3E'">
+                            </div>
+                            <div class="deck-account-info">
+                                <div class="deck-label">Active Account</div>
+                                <select id="deck-account-select">
+                                    <option value="">No Accounts</option>
+                                </select>
+                            </div>
+                            <button id="btn-quick-add-account" class="btn-icon" title="Add New Account">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="deck-ram-preview">
+                            <div class="deck-label">RAM Allocated</div>
+                            <div id="deck-ram-text" class="deck-val">2048 MB - 4096 MB</div>
+                        </div>
+
+                        <div class="deck-action">
+                            <button id="btn-play" class="btn-play">
+                                <div class="play-btn-glow"></div>
+                                <span id="play-btn-text">
+                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    LAUNCH GAME
+                                </span>
+                                <div id="play-btn-spinner" class="spinner-box hidden">
+                                    <div class="play-spinner"></div>
+                                    <span>LAUNCHING...</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Real-Time Cosmic Launch Progress Bar Deck -->
+                    <div id="launch-progress-deck" class="launch-progress-deck hidden">
+                        <div class="progress-header-row">
+                            <div class="progress-title-group">
+                                <div class="launch-spinner-orbital">
+                                    <div class="orbital-ring"></div>
+                                    <div class="orbital-core"></div>
+                                </div>
+                                <span id="progress-status-title" class="progress-status-title">Preparing launch sequence...</span>
+                            </div>
+                            <span id="progress-percent-badge" class="progress-percent-badge">0%</span>
+                        </div>
+                        <div class="progress-track-wrapper">
+                            <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;">
+                                <div class="progress-bar-shimmer"></div>
+                                <div class="progress-bar-tip"></div>
+                            </div>
+                        </div>
+                        <div class="progress-footer-row">
+                            <span id="progress-detail-subtitle" class="progress-detail-subtitle">Initializing Java 19 runtime and bytecode agent...</span>
+                            <button id="progress-jump-console" class="progress-jump-console" type="button">
+                                <span>Live Logs</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Version & Gamemode Selector Cards -->
+                    <div class="section-container">
+                        <h3 class="section-title">Select Gamemode / Client Version</h3>
+                        <div class="version-grid" id="version-cards-container">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Server Direct Connect -->
+                    <div class="section-container">
+                        <h3 class="section-title">Direct Server Connect (Untampered Direct Route)</h3>
+                        <div class="server-chips">
+                            <button class="server-chip active" data-server="">
+                                <span class="chip-dot"></span>
+                                <span class="chip-name">Default (Main Menu)</span>
+                            </button>
+                            <button class="server-chip" data-server="127.0.0.1:25565">
+                                <span class="chip-dot"></span>
+                                <span class="chip-name">Localhost / LAN</span>
+                            </button>
+                        </div>
+                        <div class="custom-server-row">
+                            <input type="text" id="custom-server-input" placeholder="Or enter direct IP:port (e.g. 127.0.0.1:25565 or play.server.net)...">
+                        </div>
+                    </div>
+
+                    <!-- Cosmic Pro Performance Boosters -->
+                    <div class="fps-booster-deck">
+                        <div class="booster-header">
+                            <div class="booster-title-row">
+                                <div class="booster-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4.5c1.47-1.47 4.5-2 4.5-2"/></svg>
+                                </div>
+                                <div>
+                                    <h4>Cosmic Performance Suite (Built for Cosmonauts)</h4>
+                                    <p>Debloated telemetry, sub-10ms G1GC memory cleaner, fast math, and instant attack responsiveness</p>
+                                </div>
+                            </div>
+                            <div class="booster-badge">TURBO 500+ FPS</div>
+                        </div>
+                        <div class="booster-grid">
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+                                <span class="pill-label">Fast Math Tables</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/></svg></span>
+                                <span class="pill-label">1.7 Hit Delay Fix</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+                                <span class="pill-label">Fullbright Gamma</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                                <span class="pill-label">Unfocused FPS Saver</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
+                                <span class="pill-label">Smart RAM Cleaner</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                            <div class="booster-pill active">
+                                <span class="pill-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                                <span class="pill-label">Debloated Telemetry</span>
+                                <span class="pill-status">ON</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PC Resources & Texture Packs Bridge -->
+                    <div class="pc-resources-deck">
+                        <div class="pc-res-header">
+                            <div class="pc-res-title-group">
+                                <div class="pc-res-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                </div>
+                                <div>
+                                    <h4>PC Texture Packs & Game Resources</h4>
+                                    <p id="pc-res-desc">Connected to your PC (.minecraft) - Real-time live texture pack sync</p>
+                                </div>
+                            </div>
+                            <div class="pc-res-actions">
+                                <button id="btn-open-pc-rp" class="btn-res-action" title="Open Texture Packs Folder">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                                    <span>Packs Folder</span>
+                                </button>
+                                <button id="btn-sync-pc-resources" class="btn-res-action btn-res-highlight" title="Resync Texture Packs and Game Assets from PC">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                                    <span>Resync All</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="pc-res-badges">
+                            <div class="res-stat-badge">
+                                <span class="res-stat-dot active"></span>
+                                <span class="res-stat-label">Texture Packs:</span>
+                                <strong id="pc-res-packs-count">Scanning...</strong>
+                            </div>
+                            <div class="res-stat-badge">
+                                <span class="res-stat-dot active"></span>
+                                <span class="res-stat-label">Game Assets:</span>
+                                <strong id="pc-res-assets-status">100% Offline Active</strong>
+                            </div>
+                            <div class="res-stat-badge">
+                                <span class="res-stat-dot active"></span>
+                                <span class="res-stat-label">PC Controls:</span>
+                                <button id="btn-import-pc-options" class="btn-stat-link" title="Import keybinds and sensitivity from .minecraft">Import Keybinds</button>
+                            </div>
+                            <div class="res-stat-badge">
+                                <span class="res-stat-dot active"></span>
+                                <span class="res-stat-label">PC Configs:</span>
+                                <button id="btn-sync-pc-configs" class="btn-stat-link" title="Sync HUD layout, waypoints & schematics from old Cosmic Client">Sync Configs & HUD</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB: RENDER & VISUALS ================= -->
+                <section id="view-mods" class="tab-view">
+                    <div class="view-header">
+                        <div>
+                            <h2>Render & Visuals Engine</h2>
+                            <p class="view-sub">Fine-tune graphics rendering, visual animations, OptiFine acceleration, and FPS performance.</p>
+                        </div>
+                        <div class="header-actions">
+                            <button id="btn-reset-mods" class="btn-secondary">Reset to Defaults</button>
+                            <button id="btn-save-mods" class="btn-primary">Apply Visual Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- ================= SECTION: RENDER & VISUALS ================= -->
+                    <div class="mod-suite-section" id="section-render-visuals" data-category="render-visuals">
+                        <div class="suite-section-header">
+                            <div class="suite-header-title">
+                                <span class="suite-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></span>
+                                <div>
+                                    <h3>Render & Visuals Suite</h3>
+                                    <p>Graphics rendering optimizations, fullbright ambient gamma, and legacy combat animations.</p>
+                                </div>
+                            </div>
+                            <span class="suite-badge">6 Modules</span>
+                        </div>
+
+                        <div class="mods-grid">
+                            <!-- Fullbright Gamma -->
+                            <div class="mod-card" data-category="render-visuals">
+                                <div class="mod-card-header">
+                                    <div class="mod-icon">
+                                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                                    </div>
+                                    <div class="mod-info">
+                                        <h4>Fullbright Gamma</h4>
+                                        <p>Permanent maximum ambient brightness in dark caves and bases.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="mod-fullbright" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="mod-badge-row">
+                                    <span class="mod-tag">Render & Visuals</span>
+                                    <span class="mod-tag">Gamma 100</span>
+                                    <span class="mod-status-text">Active</span>
+                                </div>
+                            </div>
+
+                            <!-- 1.7 Combat & Old Animations -->
+                            <div class="mod-card" data-category="render-visuals">
+                                <div class="mod-card-header">
+                                    <div class="mod-icon">
+                                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" y1="14" x2="9" y2="18"/><line x1="7" y1="17" x2="4" y2="20"/><line x1="3" y1="19" x2="5" y2="21"/></svg>
+                                    </div>
+                                    <div class="mod-info">
+                                        <h4>1.7 Old Animations</h4>
+                                        <p>Classic 1.7 blockhit, sword swing, rod, and bow draw animations.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="mod-animations" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="mod-badge-row">
+                                    <span class="mod-tag">Render & Visuals</span>
+                                    <span class="mod-tag">Visuals</span>
+                                    <span class="mod-status-text">Active</span>
+                                </div>
+                            </div>
+
+                            <!-- Fast Render & OptiFine Boost -->
+                            <div class="mod-card" data-category="render-visuals">
+                                <div class="mod-card-header">
+                                    <div class="mod-icon">
+                                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    </div>
+                                    <div class="mod-info">
+                                        <h4>Fast Render Engine</h4>
+                                        <p>Multi-threaded chunk compiler and smart animation culling.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="mod-fastrender" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="mod-badge-row">
+                                    <span class="mod-tag">Render & Visuals</span>
+                                    <span class="mod-tag">Max FPS</span>
+                                    <span class="mod-status-text">Active</span>
+                                </div>
+                            </div>
+
+
+                            <!-- Particle Multiplier & Culling -->
+                            <div class="mod-card" data-category="render-visuals">
+                                <div class="mod-card-header">
+                                    <div class="mod-icon">
+                                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                                    </div>
+                                    <div class="mod-info">
+                                        <h4>Particle Optimizer</h4>
+                                        <p>Smart particle limiters and critical hit particle effects.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="mod-particles" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="mod-badge-row">
+                                    <span class="mod-tag">Render & Visuals</span>
+                                    <span class="mod-tag">FPS Saver</span>
+                                    <span class="mod-status-text">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB: ACCOUNTS ================= -->
+                <section id="view-accounts" class="tab-view">
+                    <div class="view-header">
+                        <div>
+                            <h2>Account Management</h2>
+                            <p class="view-sub">Add Microsoft Xbox accounts or custom offline usernames for off-cloud play.</p>
+                        </div>
+                        <div class="header-actions">
+                            <button id="btn-sync-system-accounts" class="btn-secondary" style="border-color: rgba(16, 185, 129, 0.5); color: #10b981;">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                                Sync Minecraft Accounts
+                            </button>
+                            <button id="btn-open-offline-modal" class="btn-secondary">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                                Add Offline Account
+                            </button>
+                            <button id="btn-open-ms-modal" class="btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="0" y="0" width="7" height="7" fill="#F25022"/><rect x="8.5" y="0" width="7" height="7" fill="#7FBA00"/><rect x="0" y="8.5" width="7" height="7" fill="#00A4EF"/><rect x="8.5" y="8.5" width="7" height="7" fill="#FFB900"/></svg>
+                                Sign in with Microsoft
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="accounts-list-container" class="accounts-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </section>
+
+                <!-- ================= TAB: SETTINGS ================= -->
+                <section id="view-settings" class="tab-view">
+                    <div class="view-header">
+                        <div>
+                            <h2>Launcher & Performance Settings</h2>
+                            <p class="view-sub">Configure memory limits, 2026 JVM optimization presets, resolution, and agent debloating.</p>
+                        </div>
+                        <button id="btn-save-settings" class="btn-primary">Save Changes</button>
+                    </div>
+
+                    <div class="settings-grid">
+                        <!-- Memory & RAM Card -->
+                        <div class="settings-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Memory Allocation (RAM)</h3>
+                                    <p>Control minimum startup RAM (Xms) and maximum allowable heap (Xmx).</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="slider-group">
+                                    <div class="slider-header">
+                                        <label for="slider-min-ram">Initial RAM (Xms)</label>
+                                        <span id="label-min-ram" class="slider-badge">2048 MB (2.0 GB)</span>
+                                    </div>
+                                    <input type="range" id="slider-min-ram" min="1024" max="16384" step="512" value="2048">
+                                </div>
+                                <div class="slider-group">
+                                    <div class="slider-header">
+                                        <label for="slider-max-ram">Maximum RAM (Xmx)</label>
+                                        <span id="label-max-ram" class="slider-badge">4096 MB (4.0 GB)</span>
+                                    </div>
+                                    <input type="range" id="slider-max-ram" min="1024" max="16384" step="512" value="4096">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2026 JVM Optimization Profiles Card -->
+                        <div class="settings-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                </div>
+                                <div>
+                                    <h3>2026 JVM Optimization Profiles</h3>
+                                    <p>Select specialized garbage collector profiles for ultra-low latency & zero micro-stutters.</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="field-box">
+                                    <label for="setting-jvm-preset">Performance Profile</label>
+                                    <select id="setting-jvm-preset" class="cosmic-select">
+                                        <!-- Populated dynamically via JS -->
+                                    </select>
+                                </div>
+                                <div id="jvm-preset-desc" class="preset-description">
+                                    <!-- Dynamic description -->
+                                </div>
+                                <div class="field-box" style="margin-top: 12px;">
+                                    <label for="setting-custom-jvm-args">Custom Extra JVM Flags (Optional)</label>
+                                    <input type="text" id="setting-custom-jvm-args" placeholder="-Dexample=true...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Display Resolution Card -->
+                        <div class="settings-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Display & Resolution</h3>
+                                    <p>Set default launch window size and fullscreen behavior.</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="res-presets">
+                                    <button class="preset-btn" data-w="1280" data-h="720">720p HD</button>
+                                    <button class="preset-btn active" data-w="1920" data-h="1080">1080p FHD</button>
+                                    <button class="preset-btn" data-w="2560" data-h="1440">1440p 2K</button>
+                                    <button class="preset-btn" data-w="3840" data-h="2160">4K UHD</button>
+                                </div>
+                                <div class="input-row">
+                                    <div class="field-box">
+                                        <label>Width (px)</label>
+                                        <input type="number" id="setting-width" value="1280" min="640" max="3840">
+                                    </div>
+                                    <span class="res-cross">X</span>
+                                    <div class="field-box">
+                                        <label>Height (px)</label>
+                                        <input type="number" id="setting-height" value="720" min="480" max="2160">
+                                    </div>
+                                </div>
+                                <div class="toggle-row">
+                                    <label for="setting-fullscreen">Launch in Fullscreen Mode</label>
+                                    <input type="checkbox" id="setting-fullscreen" class="cosmic-toggle">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Java Runtime & Agent Card -->
+                        <div class="settings-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                                </div>
+                                <div>
+                                    <h3>Java Runtime & Offline Agent</h3>
+                                    <p>Select Java executable and toggle 2026 anticheat & performance agent.</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="field-box">
+                                    <label>Java Executable Path</label>
+                                    <div class="file-browse-row">
+                                        <input type="text" id="setting-java-path" placeholder="Auto-detected system runtime">
+                                        <button id="btn-browse-java" class="btn-secondary">Browse</button>
+                                    </div>
+                                    <small class="field-note">Detected: <span id="detected-java-text">Checking...</span></small>
+                                </div>
+                                <div class="toggle-row" style="margin-top: 14px;">
+                                    <div>
+                                        <label for="setting-use-agent" style="font-weight: 600;">Enable 2026 Java Agent</label>
+                                        <p style="font-size: 12px; color: var(--text-muted);">Provides off-cloud auth, sub-10ms memory cleaning, and OptiFine enhancements.</p>
+                                    </div>
+                                    <input type="checkbox" id="setting-use-agent" class="cosmic-toggle" checked>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB: FOLDERS ================= -->
+                <section id="view-folders" class="tab-view">
+                    <div class="view-header">
+                        <div>
+                            <h2>Game & Asset Folders</h2>
+                            <p class="view-sub">Quick 1-click access to screenshots, logs, resource packs, and config folders.</p>
+                        </div>
+                    </div>
+
+                    <div class="folders-grid">
+                        <div class="folder-card" data-action="open-folder" data-folder="root">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>Installation Root</h4>
+                                <p>CosmicClient-x64 base directory</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                        <div class="folder-card" data-action="open-folder" data-folder="screenshots">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>Screenshots</h4>
+                                <p>In-game F2 captures</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                        <div class="folder-card" data-action="open-folder" data-folder="resourcepacks">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>Resource Packs</h4>
+                                <p>Custom PvP texture packs</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                        <div class="folder-card" data-action="open-folder" data-folder="shaderpacks">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>Shader Packs</h4>
+                                <p>OptiFine ShadersMod shaders</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                        <div class="folder-card" data-action="open-folder" data-folder="logs">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>Game Logs</h4>
+                                <p>latest.log & crash dumps</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                        <div class="folder-card" data-action="open-folder" data-folder="appdata">
+                            <div class="folder-icon">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            </div>
+                            <div class="folder-info">
+                                <h4>AppData .minecraft</h4>
+                                <p>Cosmic profiles & waypoints</p>
+                            </div>
+                            <button class="btn-open-dir">Open</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ================= TAB: CONSOLE ================= -->
+                <section id="view-console" class="tab-view">
+                    <div class="view-header">
+                        <div>
+                            <h2>Real-Time Client Console</h2>
+                            <p class="view-sub">Live game process stdout/stderr output stream with filter & export tools.</p>
+                        </div>
+                        <div class="console-actions">
+                            <button id="btn-clear-console" class="btn-secondary" title="Clear terminal">Clear</button>
+                            <button id="btn-copy-console" class="btn-secondary" title="Copy all text">Copy All</button>
+                            <button id="btn-export-console" class="btn-secondary" title="Save to text file">Export Log</button>
+                            <button id="btn-kill-game" class="btn-danger" title="Force kill client process">Kill Game</button>
+                        </div>
+                    </div>
+
+                    <div class="console-toolbar">
+                        <div class="filter-chips">
+                            <button class="filter-chip active" data-filter="all">All</button>
+                            <button class="filter-chip" data-filter="info">Info</button>
+                            <button class="filter-chip" data-filter="warn">Warnings</button>
+                            <button class="filter-chip" data-filter="error">Errors</button>
+                            <button class="filter-chip" data-filter="agent">Agent</button>
+                            <button class="filter-chip" data-filter="chat">Chat</button>
+                        </div>
+                        <div class="console-search-box">
+                            <input type="text" id="console-search" placeholder="Search output logs...">
+                        </div>
+                    </div>
+
+                    <div class="terminal-box" id="terminal-box">
+                        <div class="terminal-content" id="terminal-content">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- App Footer -->
+        <footer id="app-footer">
+            <div class="footer-left">
+                <span class="footer-dot ready"></span>
+                <span id="footer-status-tag">Status: 2026 Engine Ready</span>
+                <span class="footer-divider">-</span>
+                <span id="footer-version-tag">Version: CosmicPvP 1.8.9</span>
+            </div>
+            <div class="footer-right">
+                <span id="footer-account-tag">Account: CosmicPlayer</span>
+                <span class="footer-divider">-</span>
+                <span class="footer-ver-code">v2.7.0 (2026 Pro Suite)</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <!-- Microsoft Auth Modal -->
+    <div id="modal-ms-login" class="modal-backdrop hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Sign in with Microsoft</h3>
+                <button class="modal-close" data-close="modal-ms-login"><svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M3.7 3L3 3.7 7.3 8 3 12.3l.7.7 4.3-4.3 4.3 4.3.7-.7L8.7 8 13 3.7l-.7-.7-4.3 4.3L3.7 3z"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <div id="ms-step-init" class="ms-step">
+                    <p>Connect your authentic Microsoft Minecraft account to sync your skin, username, and UUID.</p>
+                    <button id="btn-start-ms-auth" class="btn-primary" style="width: 100%; margin-top: 16px;">Sign in with Microsoft</button>
+                </div>
+                <div id="ms-step-code" class="ms-step hidden">
+                    <p>Go to <a id="ms-auth-url" href="#" target="_blank">microsoft.com/link</a> and enter this code:</p>
+                    <div class="code-display">
+                        <span id="ms-user-code">--------</span>
+                        <button id="btn-copy-code" class="btn-secondary">Copy</button>
+                    </div>
+                    <div class="polling-indicator">
+                        <div class="play-spinner"></div>
+                        <span>Waiting for authentication in browser...</span>
+                    </div>
+                </div>
+                <div id="ms-step-done" class="ms-step hidden">
+                    <div class="success-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <h4>Welcome, <span id="ms-success-name">Player</span>!</h4>
+                    <p>Account successfully linked.</p>
+                </div>
+                <div id="ms-step-error" class="ms-step hidden">
+                    <div class="error-icon"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#ef4444" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+                    <h4>Sign in Failed</h4>
+                    <p id="ms-error-msg">Unknown error occurred</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offline Account Modal -->
+    <div id="modal-offline-login" class="modal-backdrop hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Add Offline Account</h3>
+                <button class="modal-close" data-close="modal-offline-login"><svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M3.7 3L3 3.7 7.3 8 3 12.3l.7.7 4.3-4.3 4.3 4.3.7-.7L8.7 8 13 3.7l-.7-.7-4.3 4.3L3.7 3z"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <p>Enter any custom username to play in 100% pure offline mode.</p>
+                <div class="field-box" style="margin-top: 14px;">
+                    <label>Username</label>
+                    <input type="text" id="offline-username-input" placeholder="e.g. CosmicPlayer" maxlength="16">
+                </div>
+                <button id="btn-submit-offline-account" class="btn-primary" style="width: 100%; margin-top: 16px;">Add Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

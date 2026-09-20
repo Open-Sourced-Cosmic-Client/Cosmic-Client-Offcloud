@@ -1,0 +1,4 @@
+ramMB:1536
+maxRamMB:6656
+width:1280
+height:720

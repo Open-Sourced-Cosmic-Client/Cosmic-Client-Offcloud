@@ -1,0 +1,23 @@
+{
+  "profiles": {},
+  "settings": {},
+  "version": 4,
+  "authenticationDatabase": {
+    "00000000-0000-0000-0000-000000000001": {
+      "username": "CosmicPlayer",
+      "profiles": {
+        "00000000-0000-0000-0000-000000000001": {
+          "displayName": "CosmicPlayer"
+        }
+      },
+      "type": "offline",
+      "accessToken": "offline_token_cosmic",
+      "isOffline": true
+    }
+  },
+  "clientToken": "00000000-0000-0000-0000-000000000000",
+  "selectedUser": {
+    "account": "00000000-0000-0000-0000-000000000001",
+    "profile": "00000000-0000-0000-0000-000000000001"
+  }
+}

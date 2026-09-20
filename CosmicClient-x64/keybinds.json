@@ -1,0 +1,51 @@
+{
+  "Developer Console": 43,
+  "Menu": 54,
+  "Add waypoint": 48,
+  "Emote Menu": 36,
+  "Toggle Liquid Rendering": 38,
+  "Close Tooltip": 27,
+  "polls": {
+    "Open Poll": 45
+  },
+  "emotes": {
+    "Key 1": 39,
+    "Key 2": 0,
+    "Key 3": 0,
+    "Key 4": 0,
+    "Key 5": 0,
+    "Key 6": 0,
+    "Key 7": 0,
+    "Key 8": 0
+  },
+  "mapwriter": {
+    "Open menu": 50,
+    "Next map mode": 49,
+    "Zoom in": 201,
+    "Zoom out": 209
+  },
+  "pingallies": {
+    "Combination Ping": 33,
+    "Ping Faction": 34,
+    "Ping Allies": 35,
+    "Toggle Ping Sound": 22
+  },
+  "schematica": {
+    "schematica.key.load": 25,
+    "schematica.key.save": 24,
+    "schematica.key.control": 23,
+    "schematica.key.layerInc": 0,
+    "schematica.key.layerDec": 0,
+    "schematica.key.layerToggle": 0,
+    "schematica.key.renderToggle": 0,
+    "schematica.key.printerToggle": 37,
+    "schematica.key.moveHere": 0
+  },
+  "voice": {
+    "Push to Talk": 47
+  },
+  "worldeditcui": {
+    "wecui.keys.toggle": 0,
+    "wecui.keys.clear": 0
+  }
+}

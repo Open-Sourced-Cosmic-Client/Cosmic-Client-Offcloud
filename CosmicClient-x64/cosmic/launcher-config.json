@@ -1,0 +1,15 @@
+{
+  "selectedVersion": "1.8.9",
+  "ramMB": 2048,
+  "maxRamMB": 4096,
+  "width": 1280,
+  "height": 720,
+  "fullscreen": false,
+  "customJavaPath": "",
+  "jvmPreset": "lunar_2026_turbo",
+  "customJvmArgs": "",
+  "useAgent": true,
+  "hideAgent": true,
+  "autoCloseLauncher": false,
+  "serverDirectConnect": ""
+}

@@ -1,0 +1,102 @@
+{
+  "name": "cosmic-client-launcher",
+  "version": "2.0.0",
+  "description": "Official Cosmic Client Offcloud Launcher with Bytecode Agent Injection and Ultra FPS Optimization",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging",
+    "build:exe": "powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1",
+    "build:standalone": "powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1",
+    "package:win": "powershell -ExecutionPolicy Bypass -File scripts/build-windows-launchers.ps1 && node scripts/package-split-releases.js && node scripts/zip-windows-edition.js",
+    "package:mac": "node scripts/build-mac-app.js",
+    "build:mac": "node scripts/build-mac-app.js",
+    "zip:win": "node scripts/zip-windows-edition.js",
+    "zip:mac": "node scripts/zip-mac-edition.js",
+    "build:all": "electron-builder -mw",
+    "rebuild:agent": "node cosmic-agent-src/build.js",
+    "package:release": "node cosmic-agent-src/build.js && powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1 && node scripts/package-release-1.0.js"
+  },
+  "keywords": [
+    "cosmicclient",
+    "minecraft",
+    "launcher",
+    "offcloud",
+    "agent",
+    "fps-boost"
+  ],
+  "author": "Open Source Community",
+  "license": "MIT",
+  "dependencies": {
+    "prismarine-auth": "^2.6.0",
+    "tar": "^7.5.22",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.cosmic.launcher",
+    "productName": "Cosmic Client Offcloud",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**/*",
+      "src/**/*",
+      "cosmic.ico",
+      "cosmic-icon.png",
+      "accounts.json",
+      "package.json",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{o,h,c,hpp,cpp,obj,cc}",
+      "!cosmic-agent-src/**",
+      "!scripts/**",
+      "!reverse-engineering/**"
+    ],
+    "extraResources": [
+      {
+        "from": "cosmic-agent.jar",
+        "to": "cosmic-agent.jar"
+      },
+      {
+        "from": "offline-archive",
+        "to": "offline-archive"
+      }
+    ],
+    "win": {
+      "icon": "cosmic.ico",
+      "target": [
+        "dir",
+        "portable"
+      ],
+      "executableName": "CosmicClient",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "CosmicClient.${ext}",
+      "splashImage": "splash.bmp",
+      "unpackDirName": "CosmicClientPortable"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "tar.gz"
+      ],
+      "category": "Game"
+    }
+  }
+}
