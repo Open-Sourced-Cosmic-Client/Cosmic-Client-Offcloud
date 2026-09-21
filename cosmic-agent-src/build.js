@@ -130,9 +130,11 @@ const syncDestinations = [
     path.join(rootDir, '..', 'Windows-x64', 'dist', 'win-unpacked', 'cosmic-agent.jar'),
     path.join(rootDir, '..', 'Windows-x64', 'dist', 'win-unpacked', 'resources', 'cosmic-agent.jar'),
     path.join(rootDir, '..', 'Windows-x32', 'cosmic-agent.jar'),
-    path.join(rootDir, '..', 'Windows-x32', 'CosmicClient-x64', 'cosmic-agent.jar'),
     path.join(rootDir, '..', 'Source Code', 'cosmic-agent.jar'),
-    path.join(rootDir, '..', 'Cosmic Client.app', 'Contents', 'Resources', 'CosmicClient-x64', 'cosmic-agent.jar')
+    path.join(rootDir, '..', 'Cosmic Client.app', 'Contents', 'Resources', 'CosmicClient-x64', 'cosmic-agent.jar'),
+    path.join(rootDir, '..', 'Cosmic Client Offcloud Release 1.0', 'cosmic-agent.jar'),
+    path.join(rootDir, '..', 'Cosmic Client Offcloud Release 1.0', 'CosmicClient-x64', 'cosmic-agent.jar'),
+    path.join(rootDir, '..', 'Cosmic Client Offcloud Release 1.0', 'dist', 'win-unpacked', 'resources', 'cosmic-agent.jar')
 ];
 
 for (const dest of syncDestinations) {

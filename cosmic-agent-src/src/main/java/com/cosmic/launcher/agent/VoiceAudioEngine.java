@@ -181,13 +181,10 @@ public class VoiceAudioEngine {
             try {
                 long window = 0L;
                 try {
-                    Class<?> display = MainMenuHelper.getDisplayClass(null);
-                    if (display != null) {
-                        window = (Long)display.getMethod("getWindow", new Class[0]).invoke(null, new Object[0]);
-                    }
+                    Class<?> display = Class.forName("org.lwjgl.opengl.Display");
+                    window = (Long)display.getMethod("getWindow", new Class[0]).invoke(null, new Object[0]);
                 }
-                catch (Exception display) {
-                    // empty catch block
+                catch (Exception ignored) {
                 }
                 if (window != 0L) {
                     Class<?> glfw = Class.forName("org.lwjgl.glfw.GLFW");

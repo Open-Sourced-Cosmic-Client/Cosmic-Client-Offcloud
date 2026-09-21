@@ -3,4 +3,5 @@ Premain-Class: com.cosmic.launcher.agent.CosmicAgent
 Can-Retransform-Classes: true
 Can-Redefine-Classes: true
 Boot-Class-Path: cosmic-agent.jar
+Created-By: 21.0.2 (Oracle Corporation)
 

@@ -185,10 +185,12 @@ console.log(`\n[1/7] Copying primary standalone executable and launchers...`);
 const distPortable = path.join(ROOT, 'dist', 'Cosmic Client Offcloud-1.0 Launcher.exe');
 if (fs.existsSync(distPortable)) {
     fs.copyFileSync(distPortable, path.join(ROOT, 'Cosmic Client Offcloud-1.0 Launcher.exe'));
+    fs.copyFileSync(distPortable, path.join(ROOT, 'CosmicClientLauncher.exe'));
+    fs.copyFileSync(distPortable, path.join(ROOT, 'CosmicClient.exe'));
     fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'Cosmic Client Offcloud-1.0 Launcher.exe'));
     fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'CosmicClientLauncher.exe'));
     fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'CosmicClient.exe'));
-    console.log(` -> Copied fresh Electron portable launcher to release folder`);
+    console.log(` -> Copied fresh Electron portable launcher to release folder & aliases`);
 }
 
 const primaryExecutables = [
@@ -306,6 +308,9 @@ console.log(` -> Sanitized client vault copied.`);
 console.log(`\n[4/7] Packaging Java Agent source code (cosmic-agent-src)...`);
 const agentSrc = path.join(ROOT, 'cosmic-agent-src');
 const agentDest = path.join(RELEASE_DIR, 'cosmic-agent-src');
+if (fs.existsSync(path.join(agentDest, 'src'))) {
+    fs.rmSync(path.join(agentDest, 'src'), { recursive: true, force: true });
+}
 copyRecursiveSync(agentSrc, agentDest, (srcPath, isDir) => {
     const rel = path.relative(agentSrc, srcPath).replace(/\\/g, '/');
     if (rel.startsWith('bin/') || rel.startsWith('.gradle/') || rel.startsWith('build/')) return false;
