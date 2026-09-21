@@ -24,15 +24,25 @@ if not exist "%~dp0CosmicClient-x64\1.8\CosmicClient-1.8.9.jar" (
     exit /b 1
 )
 
-:: 1. If standalone compiled Electron executable is in dist, launch directly
+:: 1. If standalone compiled Electron executable exists, launch directly
+if exist "%~dp0Cosmic Client Offcloud-1.0 Launcher.exe" (
+    echo Starting Cosmic Client Offcloud Launcher...
+    start "" "%~dp0Cosmic Client Offcloud-1.0 Launcher.exe"
+    exit /b 0
+)
 if exist "%~dp0dist\win-unpacked\CosmicClient.exe" (
     echo Starting Cosmic Client Launcher (Standalone)...
     start "" "%~dp0dist\win-unpacked\CosmicClient.exe"
     exit /b 0
 )
-if exist "%~dp0dist\win-unpacked\CosmicClientOffcloud.exe" (
-    echo Starting Cosmic Client Offcloud Launcher (Standalone)...
-    start "" "%~dp0dist\win-unpacked\CosmicClientOffcloud.exe"
+if exist "%~dp0dist\Cosmic Client Offcloud-1.0 Launcher.exe" (
+    echo Starting Cosmic Client Offcloud Launcher...
+    start "" "%~dp0dist\Cosmic Client Offcloud-1.0 Launcher.exe"
+    exit /b 0
+)
+if exist "%~dp0CosmicClient.exe" (
+    echo Starting Cosmic Client Launcher...
+    start "" "%~dp0CosmicClient.exe"
     exit /b 0
 )
 

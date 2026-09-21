@@ -180,6 +180,17 @@ if (!fs.existsSync(RELEASE_DIR)) {
 }
 
 console.log(`\n[1/7] Copying primary standalone executable and launchers...`);
+
+// 1. If built with electron-builder, grab the fresh portable Electron executable from dist
+const distPortable = path.join(ROOT, 'dist', 'Cosmic Client Offcloud-1.0 Launcher.exe');
+if (fs.existsSync(distPortable)) {
+    fs.copyFileSync(distPortable, path.join(ROOT, 'Cosmic Client Offcloud-1.0 Launcher.exe'));
+    fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'Cosmic Client Offcloud-1.0 Launcher.exe'));
+    fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'CosmicClientLauncher.exe'));
+    fs.copyFileSync(distPortable, path.join(RELEASE_DIR, 'CosmicClient.exe'));
+    console.log(` -> Copied fresh Electron portable launcher to release folder`);
+}
+
 const primaryExecutables = [
     'Cosmic Client Offcloud-1.0 Launcher.exe',
     'CosmicClient-Direct.exe',
@@ -198,6 +209,17 @@ for (const exeName of primaryExecutables) {
     } else {
         console.warn(` [!] Missing: ${exeName}`);
     }
+}
+
+// 2. Copy unpacked standalone Electron directory if available
+const unpackedSrc = path.join(ROOT, 'dist', 'win-unpacked');
+if (fs.existsSync(unpackedSrc)) {
+    console.log(` -> Packaging unpacked standalone Electron directory (dist/win-unpacked)...`);
+    copyRecursiveSync(
+        unpackedSrc,
+        path.join(RELEASE_DIR, 'dist', 'win-unpacked'),
+        (p) => !p.replace(/\\/g, '/').endsWith('/resources/CosmicClient-x64')
+    );
 }
 
 console.log(`\n[2/7] Copying branding assets, license, and offline profiles...`);
@@ -257,6 +279,27 @@ for (const lf of lingeringFiles) {
     if (fs.existsSync(lf)) {
         try { fs.unlinkSync(lf); } catch(e){}
     }
+}
+// Purge unindexed bloat objects from release directory
+const releaseObjectsDir = path.join(vaultDest, 'assets_18', 'objects');
+if (fs.existsSync(releaseObjectsDir) && validAssetHashes.size > 0) {
+    function cleanBloat(dir) {
+        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                cleanBloat(full);
+                if (fs.readdirSync(full).length === 0) {
+                    try { fs.rmdirSync(full); } catch(e){}
+                }
+            } else {
+                const hash = entry.name.toLowerCase();
+                if (!validAssetHashes.has(hash)) {
+                    try { fs.unlinkSync(full); } catch(e){}
+                }
+            }
+        }
+    }
+    cleanBloat(releaseObjectsDir);
 }
 console.log(` -> Sanitized client vault copied.`);
 

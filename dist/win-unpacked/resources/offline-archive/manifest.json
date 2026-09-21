@@ -1,0 +1,191 @@
+{
+  "version": 2,
+  "files": [
+    {
+      "id": "java-linux-x64",
+      "url": "http://127.0.0.1:45678/cosmic/java-linux-x64.tar.gz",
+      "dst": "bootstrap/java",
+      "sha256": "955c511bb3694618fd3a020a36b3a3601d71d141f9e8a6ce419c4d50ce0c4e11",
+      "size": 93499658,
+      "platform": [
+        "linux-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "java-mac-aarch64",
+      "url": "http://127.0.0.1:45678/cosmic/java-mac-aarch64.tar.gz",
+      "dst": "bootstrap/java",
+      "sha256": "6d95c3cf0dbf9bd4f7b00e67e9e662144b9c48c952409afbed27bc4e0cceb044",
+      "size": 81183900,
+      "platform": [
+        "mac-aarch64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "java-mac-x64",
+      "url": "http://127.0.0.1:45678/cosmic/java-mac-x64.tar.gz",
+      "dst": "bootstrap/java",
+      "sha256": "0ab61507f5222f1973044c6ee16697b816cf7dcd6f16decff87511b9e4e41060",
+      "size": 84795602,
+      "platform": [
+        "mac-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "java-windows-x32",
+      "url": "http://127.0.0.1:45678/cosmic/java-windows-x32.tar.gz",
+      "dst": "bootstrap/java",
+      "sha256": "78bad94acf02e7433490d32d3699b17e68c02feb89c6ada455c55e403705405a",
+      "size": 69265358,
+      "platform": [
+        "windows-x32"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "java-windows-x64",
+      "url": "http://127.0.0.1:45678/cosmic/java-windows-x64.tar.gz",
+      "dst": "bootstrap/java",
+      "sha256": "2bc73b17aecbdc3cc6ee88d1e7429dd2d3231d51975a5cc03ff3b77182b17dca",
+      "size": 80520536,
+      "platform": [
+        "windows-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "jcef-linux-x64",
+      "url": "http://127.0.0.1:45678/cosmic/jcef-linux-x64.tar.gz",
+      "dst": "bootstrap/jcef",
+      "sha256": "a0005e5260448f1af37797caeee9cc5824b2fc0b2d2f2ac90a88facf12be5885",
+      "size": 117270531,
+      "platform": [
+        "linux-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "jcef-mac-aarch64",
+      "url": "http://127.0.0.1:45678/cosmic/jcef-mac-aarch64.tar.gz",
+      "dst": "bootstrap/jcef",
+      "sha256": "8674bedfbd81a84c9219b559111fe11147ccb88fa084fb02609bc0267d157443",
+      "size": 104430264,
+      "platform": [
+        "mac-aarch64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "jcef-mac-x64",
+      "url": "http://127.0.0.1:45678/cosmic/jcef-mac-x64.tar.gz",
+      "dst": "bootstrap/jcef",
+      "sha256": "488469bf5f41d364432b1c4b50bc2deb98c66103ebded3a4167a431613a1ff5d",
+      "size": 110122142,
+      "platform": [
+        "mac-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "jcef-windows-x32",
+      "url": "http://127.0.0.1:45678/cosmic/jcef-windows-x32.tar.gz",
+      "dst": "bootstrap/jcef",
+      "sha256": "fd315f1f15f4ab5da792bbf8bc3a80754511a1ee5dba058093de9b8bbd0bc62a",
+      "size": 113380538,
+      "platform": [
+        "windows-x32"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "jcef-windows-x64",
+      "url": "http://127.0.0.1:45678/cosmic/jcef-windows-x64.tar.gz",
+      "dst": "bootstrap/jcef",
+      "sha256": "ac5a4f985cd49d40ea03e7f9d31542088583abfde852ca096d689ec569f169d2",
+      "size": 122023231,
+      "platform": [
+        "windows-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "client-jar",
+      "url": "http://127.0.0.1:45678/cosmic/CosmicClient-1.8.9.jar",
+      "dst": "1.8/CosmicClient-1.8.9.jar",
+      "sha256": "86c11eb27a8a4d336d3fe66813050bbadbab31253c0f343c47acbe13d3bde160",
+      "size": 19823252,
+      "platform": [
+        "all"
+      ]
+    },
+    {
+      "id": "assets",
+      "url": "http://127.0.0.1:45678/cosmic/assets.tar.gz",
+      "dst": "1.8/assets",
+      "sha256": "9c5938869e5a45f1ce6fe025036431dafe344a0c799bf4dfc3a598a904e62f39",
+      "size": 185101125,
+      "platform": [
+        "all"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "natives-linux-x64",
+      "url": "http://127.0.0.1:45678/cosmic/natives-linux-x64.tar.gz",
+      "dst": "1.8/natives",
+      "sha256": "fb4509362386987aa3c7ce9b16b873012da5d30deb36aaecbe09306d273eeb04",
+      "size": 1217461,
+      "platform": [
+        "linux-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "natives-mac-aarch64",
+      "url": "http://127.0.0.1:45678/cosmic/natives-mac-aarch64.tar.gz",
+      "dst": "1.8/natives",
+      "sha256": "8fd597d122cce0ccaea9bdac2fc9bae31b8aec18997a15659308b9e8a4d9f16b",
+      "size": 867591,
+      "platform": [
+        "mac-aarch64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "natives-windows-x32",
+      "url": "http://127.0.0.1:45678/cosmic/natives-windows-x32.tar.gz",
+      "dst": "1.8/natives",
+      "sha256": "1c13b5e916e98951d570c2efa84602ac87a3a7c38d526e2d78b65d0e1ab7b2df",
+      "size": 1317979,
+      "platform": [
+        "windows-x32"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "natives-windows-x64",
+      "url": "http://127.0.0.1:45678/cosmic/natives-windows-x64.tar.gz",
+      "dst": "1.8/natives",
+      "sha256": "3f406b9b57a00114868ee15489b5edead4382fddb427a1477f0a054190233eb4",
+      "size": 1493402,
+      "platform": [
+        "windows-x64"
+      ],
+      "extract": "tar.gz"
+    },
+    {
+      "id": "libraries",
+      "url": "http://127.0.0.1:45678/cosmic/libraries.tar.gz",
+      "dst": "1.8/libraries",
+      "sha256": "abe0297698677110daea1639f923559da9807a6122c513e4dc0d60e20ff20ce8",
+      "size": 19642525,
+      "platform": [
+        "all"
+      ],
+      "extract": "tar.gz"
+    }
+  ]
+}

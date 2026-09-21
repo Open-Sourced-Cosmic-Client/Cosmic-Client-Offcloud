@@ -27,6 +27,10 @@ crash-reports/
 **/assets_18/skins/
 **/skins/
 **/scratch/
+cosmic/
+**/cosmic/
+auth_cache/
+**/auth_cache/
 
 # Build outputs
 target/

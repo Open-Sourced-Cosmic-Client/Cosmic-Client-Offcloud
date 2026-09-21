@@ -46,6 +46,8 @@ set "CHOICE_VAL=%ERRORLEVEL%"
 if "%CHOICE_VAL%"=="1" (
     if exist "%~dp0Cosmic Client Offcloud-1.0 Launcher.exe" (
         start "" "%~dp0Cosmic Client Offcloud-1.0 Launcher.exe"
+    ) else if exist "%~dp0dist\win-unpacked\CosmicClient.exe" (
+        start "" "%~dp0dist\win-unpacked\CosmicClient.exe"
     ) else if exist "%~dp0CosmicClientLauncher.exe" (
         start "" "%~dp0CosmicClientLauncher.exe"
     ) else (

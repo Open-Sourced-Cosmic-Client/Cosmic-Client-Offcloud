@@ -6,8 +6,8 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --enable-logging",
-    "build:exe": "powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1",
-    "build:standalone": "powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1",
+    "build:exe": "electron-builder --win",
+    "build:standalone": "electron-builder --win",
     "package:win": "powershell -ExecutionPolicy Bypass -File scripts/build-windows-launchers.ps1 && node scripts/package-split-releases.js && node scripts/zip-windows-edition.js",
     "package:mac": "node scripts/build-mac-app.js",
     "build:mac": "node scripts/build-mac-app.js",
@@ -15,7 +15,7 @@
     "zip:mac": "node scripts/zip-mac-edition.js",
     "build:all": "electron-builder -mw",
     "rebuild:agent": "node cosmic-agent-src/build.js",
-    "package:release": "node cosmic-agent-src/build.js && powershell -ExecutionPolicy Bypass -File scripts/build-standalone-exe.ps1 && node scripts/package-release-1.0.js"
+    "package:release": "node cosmic-agent-src/build.js && electron-builder --win && node scripts/package-release-1.0.js"
   },
   "keywords": [
     "cosmicclient",
@@ -80,7 +80,7 @@
       "signAndEditExecutable": false
     },
     "portable": {
-      "artifactName": "CosmicClient.${ext}",
+      "artifactName": "Cosmic Client Offcloud-1.0 Launcher.${ext}",
       "splashImage": "splash.bmp",
       "unpackDirName": "CosmicClientPortable"
     },
