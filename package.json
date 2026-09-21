@@ -15,7 +15,7 @@
     "zip:mac": "node scripts/zip-mac-edition.js",
     "build:all": "electron-builder -mw",
     "rebuild:agent": "node cosmic-agent-src/build.js",
-    "package:release": "node cosmic-agent-src/build.js && electron-builder --win && node scripts/package-release-1.0.js"
+    "package:release": "node cosmic-agent-src/build.js && python scripts/package-minimal-payload.py && electron-builder --win && node scripts/package-release-1.0.js"
   },
   "keywords": [
     "cosmicclient",
@@ -68,6 +68,10 @@
       {
         "from": "offline-archive",
         "to": "offline-archive"
+      },
+      {
+        "from": "cosmic-payload.zip",
+        "to": "cosmic-payload.zip"
       }
     ],
     "win": {

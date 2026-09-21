@@ -469,7 +469,12 @@ node scripts/package-release-1.0.js
 Enjoy Cosmic Client Offcloud Release 1.0!
 `;
 
-fs.writeFileSync(path.join(RELEASE_DIR, 'README.md'), readmeContent, 'utf8');
+const rootReadme = path.join(ROOT, 'README.md');
+if (fs.existsSync(rootReadme)) {
+    fs.copyFileSync(rootReadme, path.join(RELEASE_DIR, 'README.md'));
+} else {
+    fs.writeFileSync(path.join(RELEASE_DIR, 'README.md'), readmeContent, 'utf8');
+}
 fs.writeFileSync(path.join(RELEASE_DIR, 'README.txt'), readmeContent, 'utf8');
 console.log(` -> Written README.md & README.txt`);
 

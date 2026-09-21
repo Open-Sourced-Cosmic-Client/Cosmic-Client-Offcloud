@@ -50,6 +50,9 @@ The client operates on a 5-layer decoupled pipeline ensuring zero dependency on 
 
 ### 3. CosmicAgent (Java Agent / Premain)
 - **`CosmicAgent.java`**: Hooks JVM class loading prior to `main()` execution.
+- **`HardeningClassTransformer.java`**: Obfuscated blocklists shielding Minecraft and client classes against ghost client injections and unauthorized reflection.
+- **`BufferPipelineManager.java` & `ClientHardeningGuard.java`**: State flusher and security violation traps preventing unauthorized class redefinition.
+- **`AntiTamperGuard.java`**: Structured namespace scanning targeting rogue injectors (`bytebuddy`, `javassist`, `vape`, `drip`, `slinky`, `raven`, `liquidbounce`) while strictly whitelisting core runtime and stream classes (`ForEachOps`, `ao`, `wb`).
 
 ### 4. Bytecode Transformer Pipeline
 Modular ASM transformers modifying runtime behavior in memory:
